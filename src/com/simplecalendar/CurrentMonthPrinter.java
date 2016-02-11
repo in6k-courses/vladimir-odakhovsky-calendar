@@ -59,9 +59,7 @@ public class CurrentMonthPrinter {
 
         for (int i = 0; i < TOTAL_MONTH_DAYS; i++) {
 
-            boolean isSelected = isToday(i) || isWeek(i);
-
-            if (isSelected) {
+            if (isToday(i) || isWeek(i)) {
                 System.out.printf(" (%d) ", i + 1);
             } else {
                 System.out.printf("%3d  ", i + 1);
