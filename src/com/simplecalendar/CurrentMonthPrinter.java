@@ -2,6 +2,7 @@ package com.simplecalendar;
 
 import com.simplecalendar.util.DateUtil;
 import com.simplecalendar.util.OSInfo;
+import com.simplecalendar.util.UnixPrinter;
 
 import java.time.LocalDate;
 import java.time.MonthDay;
@@ -31,7 +32,24 @@ public class CurrentMonthPrinter {
     }
 
     private void printForUnix() {
-        System.out.println("print for unix");
+        System.out.println(" Mo  Tu  We  Th  Fr  Sa  Su");
+
+        printSpacesBeforeFirstDay();
+
+        for (int i = 0; i < TOTAL_MONTH_DAYS; i++) {
+
+            if(isToday(i)){
+                UnixPrinter.printConsoleGreen(String.format(" %2d ", i + 1));
+            }else if (isWeek(i)){
+                UnixPrinter.printConsoleRed(String.format(" %2d ", i + 1));
+            }else {
+                System.out.printf(" %2d ", i + 1);
+            }
+
+            if (isLastDay(i)) {
+                System.out.println();
+            }
+        }
     }
 
     private void printForWindowsAndMac() {
@@ -40,14 +58,13 @@ public class CurrentMonthPrinter {
         printSpacesBeforeFirstDay();
 
         for (int i = 0; i < TOTAL_MONTH_DAYS; i++) {
+
             boolean isSelected = isToday(i) || isWeek(i);
 
-            int dayNumber = i + 1;
-
             if (isSelected) {
-                System.out.printf(" (%d) ", dayNumber);
+                System.out.printf(" (%d) ", i + 1);
             } else {
-                System.out.printf("%3d  ", dayNumber);
+                System.out.printf("%3d  ", i + 1);
             }
 
             if (isLastDay(i)) {
