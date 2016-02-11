@@ -1,4 +1,4 @@
-package com.simplecalendar.date;
+package com.simplecalendar.util;
 
 import java.time.LocalDate;
 import java.time.format.TextStyle;

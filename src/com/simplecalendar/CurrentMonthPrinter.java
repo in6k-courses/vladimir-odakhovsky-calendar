@@ -1,16 +1,17 @@
-package com.simplecalendar.date;
+package com.simplecalendar;
+
+import com.simplecalendar.util.DateUtil;
+import com.simplecalendar.util.OSInfo;
 
 import java.time.LocalDate;
 import java.time.MonthDay;
 import java.time.temporal.TemporalAdjusters;
 
 public class CurrentMonthPrinter {
-
     private final int TOTAL_MONTH_DAYS;
     private LocalDate currentDate;
-    private int numberOfFirstMonthDay;
     private LocalDate firstDayOfMonth;
-    private static String OS = System.getProperty("os.name").toLowerCase();
+    private int numberOfFirstMonthDay;
 
     public CurrentMonthPrinter() {
         currentDate = LocalDate.now();
@@ -20,11 +21,11 @@ public class CurrentMonthPrinter {
     }
 
     public void print() {
-        if (isUnix()) {
+        if (OSInfo.isUnix()) {
             printForUnix();
         }
 
-        if (isWindows() || isMac()) {
+        if (OSInfo.isWindows() || OSInfo.isMac()) {
             printForWindowsAndMac();
         }
     }
@@ -75,15 +76,5 @@ public class CurrentMonthPrinter {
             System.out.print("   ");
     }
 
-    private boolean isWindows() {
-        return (OS.contains("win"));
-    }
 
-    private boolean isMac() {
-        return (OS.contains("mac"));
-    }
-
-    private static boolean isUnix() {
-        return (OS.contains("nux"));
-    }
 }
