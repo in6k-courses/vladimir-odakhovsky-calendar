@@ -88,7 +88,7 @@ public class CurrentMonthPrinter {
 
     public void printSpacesBeforeFirstDay() {
         for (int i = 1; i < numberOfFirstMonthDay; i++)
-            System.out.print("   ");
+            System.out.print("    ");
     }
 
 
