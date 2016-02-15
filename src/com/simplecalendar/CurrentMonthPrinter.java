@@ -22,11 +22,11 @@ public class CurrentMonthPrinter {
     }
 
     public void print() {
-        if (OSInfo.isUnix()) {
+        if (OSInfo.isUnix() || OSInfo.isMac()) {
             printForUnix();
         }
 
-        if (OSInfo.isWindows() || OSInfo.isMac()) {
+        if (OSInfo.isWindows()) {
             printForWindowsAndMac();
         }
     }
